@@ -38,8 +38,8 @@ flutter:
         pluginClass: FlutterPosPrinterPlatformPlugin
       ios:
         pluginClass: FlutterPosPrinterPlatformPlugin
-      windows:
-        pluginClass: FlutterPosPrinterPlatformPlugin
+#      windows:
+#        pluginClass: FlutterPosPrinterPlatformPlugin
 
   # To add assets to your plugin package, add an assets section, like this:
   # assets:
