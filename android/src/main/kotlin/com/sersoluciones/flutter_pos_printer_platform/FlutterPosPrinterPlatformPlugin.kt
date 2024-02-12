@@ -371,8 +371,8 @@ class FlutterPosPrinterPlatformPlugin : FlutterPlugin, MethodCallHandler, Plugin
     private fun checkPermissions(): Boolean {
         val permissions = mutableListOf(
             Manifest.permission.ACCESS_FINE_LOCATION,
-//            Manifest.permission.BLUETOOTH,
-//            Manifest.permission.BLUETOOTH_ADMIN,
+            Manifest.permission.BLUETOOTH,
+            Manifest.permission.BLUETOOTH_ADMIN,
         )
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
