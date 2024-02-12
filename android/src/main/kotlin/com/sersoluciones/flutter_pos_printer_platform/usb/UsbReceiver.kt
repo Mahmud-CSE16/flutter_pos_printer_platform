@@ -7,6 +7,7 @@ import android.content.Intent
 import android.hardware.usb.UsbDevice
 import android.hardware.usb.UsbManager
 import android.util.Log
+import com.sersoluciones.flutter_pos_printer_platform.adapter.USBPrinterAdapter
 
 class UsbReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context?, intent: Intent?) {
@@ -17,10 +18,10 @@ class UsbReceiver : BroadcastReceiver() {
 
             val usbDevice: UsbDevice? = intent.getParcelableExtra(UsbManager.EXTRA_DEVICE)
 
-            val mPermissionIndent = if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S) {
+            val mPermissionIndent = if (android.os.Build.VERSION.SDK_INT >= 34) {
+                PendingIntent.getBroadcast(context, 0, Intent("com.flutter_pos_printer.USB_PERMISSION"), PendingIntent.FLAG_MUTABLE or PendingIntent.FLAG_IMMUTABLE)
+            }else {
                 PendingIntent.getBroadcast(context, 0, Intent("com.flutter_pos_printer.USB_PERMISSION"), PendingIntent.FLAG_MUTABLE)
-            } else {
-                PendingIntent.getBroadcast(context, 0, Intent("com.flutter_pos_printer.USB_PERMISSION"), 0)
             }
             val mUSBManager = context?.getSystemService(Context.USB_SERVICE) as UsbManager?
             mUSBManager?.requestPermission(usbDevice, mPermissionIndent)
